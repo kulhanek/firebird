@@ -10,8 +10,8 @@ CMAKE_MINIMUM_REQUIRED(VERSION 2.8 FATAL_ERROR)
 # ==============================================================================
 
 SET(LIBS_STATIC OFF CACHE BOOL "Should the static version of firebird library be built?")
-SET(LIBS_SHARED ON CACHE BOOL "Should the dynamic version of firebird library be built?")
-SET(TRY_QT_LIB ON CACHE BOOL "Should the qt lib be used?")
+SET(LIBS_SHARED ON  CACHE BOOL "Should the dynamic version of firebird library be built?")
+SET(TRY_QT_LIB  ON  CACHE BOOL "Should the qt lib be used?")
 
 # ==============================================================================
 # project setup ----------------------------------------------------------------
@@ -39,27 +39,6 @@ ENDIF(NOT DEVELOPMENT_ROOT)
 # external libraries -----------------------------------------------------------
 # ==============================================================================
 
-# system libraries -------------------------------
-INCLUDE(src/lib/cmake/FindPThread.cmake)
-INCLUDE(src/lib/cmake/FindUUID.cmake)
-INCLUDE(src/lib/cmake/FindDL.cmake)
-
-IF(TRY_QT_LIB)
-    # interaction with Qt4 ---------------------------
-    FIND_PACKAGE(Qt4)
-    IF(QT4_FOUND)
-        INCLUDE(${QT_USE_FILE})
-        SET(HAVE_QT4 1)
-        ADD_DEFINITIONS(-DHAVE_QT4)
-    ENDIF(QT4_FOUND)
-ENDIF(TRY_QT_LIB)
-
-SET(SYSTEM_LIBS ${QT_LIBRARIES}
-                ${PTHREAD_LIBRARY_NAME}
-                ${UUID_LIBRARY_NAME}
-                ${DL_LIBRARY_NAME}
-                )
-
 # HIPOLY -----------------------------------------
 SET(HIPOLY_ROOT ${DEVELOPMENT_ROOT}/projects/hipoly/1.0)
 INCLUDE_DIRECTORIES(${HIPOLY_ROOT}/src/lib/hipoly SYSTEM)
@@ -77,10 +56,8 @@ INCLUDE_DIRECTORIES(${HIPOLY_ROOT}/src/lib/hipoly/xml SYSTEM)
 LINK_DIRECTORIES(${HIPOLY_ROOT}/lib)
 SET(HIPOLY_LIB_NAME hipoly)
 
-# FBclient ---------------------------------------
-SET(FBCLIENT_ROOT ${DEVELOPMENT_ROOT}/thirdparty/fbclient/2.5.2.26539)
-INCLUDE_DIRECTORIES(${FBCLIENT_ROOT}/include SYSTEM)
-LINK_DIRECTORIES(${FBCLIENT_ROOT}/lib)
+# FBClient ---------------------------------------
+FIND_PACKAGE(FBClient REQUIRED)
 SET(FBCLIENT_LIB_NAME fbclient)
 
 # architecture -----------------------------------
