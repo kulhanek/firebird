@@ -1,0 +1,6 @@
+Firebird.creator.user
+/lib
+CMakeCache.txt
+CMakeFiles
+Makefile
+*.cmake

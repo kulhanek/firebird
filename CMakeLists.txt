@@ -38,6 +38,7 @@ ENDIF(NOT DEVELOPMENT_ROOT)
 # ==============================================================================
 # external libraries -----------------------------------------------------------
 # ==============================================================================
+set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${DEVELOPMENT_ROOT}/projects/cmake-modules/1.0/share/modules")
 
 # HIPOLY -----------------------------------------
 SET(HIPOLY_ROOT ${DEVELOPMENT_ROOT}/projects/hipoly/1.0)
