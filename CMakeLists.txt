@@ -2,7 +2,7 @@
 # Firebird CMake File
 # ==============================================================================
 
-CMAKE_MINIMUM_REQUIRED(VERSION 2.8 FATAL_ERROR)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.10 FATAL_ERROR)
 #SET(CMAKE_VERBOSE_MAKEFILE ON)
 
 # ==============================================================================
@@ -18,6 +18,7 @@ SET(TRY_QT_LIB  ON  CACHE BOOL "Should the qt lib be used?")
 # ==============================================================================
 
 # define project name -----------------------------
+PROJECT(FIREBIRD)
 SET(FIREBIRD_VERSION 1.0.x)
 
 # what languages we use ---------------------------
